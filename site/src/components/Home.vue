@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import router from "@/router";
 import { useStore } from "@/stores/store";
 import Header from "./Header.vue";
 const store = useStore();
@@ -6,9 +7,9 @@ const store = useStore();
 function nextStep() {
   console.log(store.getUsername);
   if (!store.getUsername) {
-    window.location.href = "/login";
+    router.push("login")
   } else {
-    window.location.href = "/mypanel";
+    router.push("mypanel")
   }
 }
 store.fetchProfile();
