@@ -1,4 +1,5 @@
 const User = require("../models/user.model.js");
+const Utilisateur = require('../models/user.model.js')
 
 var mongoose = require("mongoose");
 const { isAuthenticated } = require("../middlewares/auth.js");
@@ -70,13 +71,80 @@ function getMyProfile(req, res) {
   });
 }
 
+
+
+
 function getUserNameByID(req, res) {
   User.findById(req.params._id).then((user) => {
     res.send(user.username);
   });
 }
 
+
+
+//version Utilisateur model
+function getMyUtilisateur(req, res) {
+  Utilisateur.findById(req.user._id).then(async (data) => {
+    let response = (({ _id, googleId, username, avatar, profile, name, nourriture }) => ({
+      _id,
+      googleId,
+      username,
+      avatar,
+      profile,
+      name,
+      nourriture
+    }))(data);
+    return res.send(response);
+  });
+}
+
+//function that modify the diet of an user
+//inspired by updatePlanner
+function modifyMyProfile(req, res) {
+  let id = "";
+  await Utilisateur.find().then((users) => {
+    let user = users.find((user) => user.username == req.params.username);
+    if (user) {
+      id = user._id;
+    }
+    Utilisateur.findByIdAndUpdate(id).then((user) => {
+      modifUser = user.find((user) => user.userId == req.body._id)
+      if (modifUser) {
+        modifUser.profile = req.body.profile
+        res.status(200).send("Done");
+      }
+      else {
+        res.send("error modifyMyProfile");
+      }
+    }
+    )
+  });
+}
+/*
+async function updatePlanner(req, res) {
+  let id = "";
+  await Planner.find().then((planners) => {
+    let planner = planners.find((planner) => planner.link == req.params.link);
+    if (planner) {
+      id = planner._id;
+    }
+  });
+  Planner.findByIdAndUpdate(id).then((planner) => {
+    plannerUser = planner.users.find((user) => user.userId == req.body._id);
+    if (plannerUser) {
+      plannerUser.datezone = req.body.datezone;
+    }
+    planner.users = planner.users.filter((user) => user.userId !== req.body._id);
+    planner.users.push(plannerUser);
+    planner.save();
+    res.status(200).send("Done");
+  });
+}
+*/
+
 module.exports = {
   getMyProfile,
   getUserNameByID,
+  getMyUtilisateur,
+  modifyMyProfile
 };
