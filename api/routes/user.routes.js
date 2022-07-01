@@ -23,8 +23,17 @@ module.exports = function (app) {
     user.getUserNameByID
   );
 
+
+  //routes set profile
+  //mettre en place une fonction qui permettra de modifier du coup le régime alimentaire du profile connecté
+  app.patch('/api/users/myprofile', auth.isAuthenticated, urlencodedParser, user.modifyMyProfile);
+
   // app.get("/api/users/myplanner", auth.isAuthenticated, user.getPlanner)
   // app.get("/api/users/myboosters", auth.isAuthenticated, user.getMyBoosters)
   // app.get("/api/users/set/:setname", auth.isAuthenticated, user.claimSet)
   // app.get("/api/users/leaderboard", auth.isAuthenticated, user.getLeaderboard)
+
+  //pour le choix/modification du profile, updatePlanner ? 
+  //app.patch('/api/users/modification', auth.isAuthenticated);
+
 };
