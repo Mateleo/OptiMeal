@@ -8,7 +8,8 @@ interface user {
   googleId: string;
   avatar: string;
   username: string;
-  planner: [planner];
+  profile:"G" | "C" | "L";
+  age:"teen" | "adult"
 }
 
 interface planner {
@@ -27,7 +28,8 @@ interface PromisePlanner {
 
 interface PromiseUser {
   _id: string;
-  datezone?: Array<string>;
+  profile:"G" | "C" | "L";
+  age:"teen" | "adult"
 }
 
 export const useStore = defineStore("main", {
@@ -44,6 +46,12 @@ export const useStore = defineStore("main", {
     getUserId(state) {
       return state.userData._id;
     },
+    getAge(state){
+      return state.userData.age
+    },
+    getProfile(state){
+      return state.userData.profile
+    }
   },
   actions: {
     async fetchProfile() {
@@ -57,16 +65,17 @@ export const useStore = defineStore("main", {
       console.log("fetch profile");
       console.log(this.userData);
     },
-    async fetchUserPlanners(userid: string) {
-      const response = await axios.get(
-        import.meta.env.VITE_API_URL + "/planner/" + userid,
-        {
-          withCredentials: true,
-        }
-      );
-      console.log("fetch User planners");
-      console.log(response.data);
-      this.userData.planner = response.data;
+    async updateUserProfile(data: PromiseUser) {
+      console.log(data);
+      const options: AxiosRequestConfig = {
+        method: "PUT",
+        url: import.meta.env.VITE_API_URL + "/user",
+        headers: { "content-type": "application/x-www-form-urlencoded" },
+        withCredentials: true,
+        data: qs.stringify(data),
+      };
+      await axios(options);
+      console.log("update profile");
     },
     async putPlanner(data: PromisePlanner) {
       console.log(data);

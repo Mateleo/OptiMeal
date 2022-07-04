@@ -39,6 +39,8 @@ passport.use(
             googleId: profile.id,
             username: profile.name.givenName,
             avatar: profile.picture,
+            profile:"C",
+            age:"adult"
           });
           return done(null, newUser);
         }

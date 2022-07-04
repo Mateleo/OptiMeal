@@ -22,6 +22,7 @@ module.exports = function (app) {
     urlencodedParser,
     user.getUserNameByID
   );
+  app.put("/api/user", auth.isAuthenticated, urlencodedParser, user.updateProfile);
 
   // app.get("/api/users/myplanner", auth.isAuthenticated, user.getPlanner)
   // app.get("/api/users/myboosters", auth.isAuthenticated, user.getMyBoosters)

@@ -58,15 +58,8 @@ const { isAuthenticated } = require("../middlewares/auth.js");
 
 //get the profile of a user with all info. (planner is simply a list of planners_id)
 function getMyProfile(req, res) {
-  User.findById(req.user._id).then(async (data) => {
-    let response = (({ _id, googleId, avatar, username, planner }) => ({
-      _id,
-      googleId,
-      username,
-      avatar,
-      planner,
-    }))(data);
-    return res.send(response);
+  User.findById(req.user._id).then((user) => {
+    return res.send(user);
   });
 }
 
@@ -76,7 +69,18 @@ function getUserNameByID(req, res) {
   });
 }
 
+function updateProfile(req, res){
+  console.log(req.body)
+  User.findById(req.body._id).then((user)=>{
+    user.profile = req.body.profile,
+    user.age = req.body.age
+    user.save()
+  })
+  res.sendStatus(200)
+}
+
 module.exports = {
   getMyProfile,
   getUserNameByID,
+  updateProfile
 };

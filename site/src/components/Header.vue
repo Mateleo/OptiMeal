@@ -1,9 +1,9 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div class="fixed top-0 left-0 right-0 z-10 pt-1">
+  <div class="fixed top-0 left-0 right-0 z-10">
     <div
-      class="flex flex-wrap md:flex-nowrap justify-between mb-3 md:pr-4 md:pl-3 px-1 bg-gradient-to-r from-[#414345] to-[#232526]"
+      class="pt-1 flex flex-wrap md:flex-nowrap justify-between mb-3 md:pr-4 md:pl-3 px-1 bg-gradient-to-r from-[#414345] to-[#232526]"
     >
       <div class="flex m-auto">
         <router-link
@@ -19,8 +19,8 @@
       >
         <router-link to="/create" class="md:mr-2 mr-1 link-underline">
           CREATE</router-link>
-        <router-link to="/support" class="md:mx-2 mx-1 link-underline"
-          >SUPPORT</router-link
+        <router-link to="/contact" class="md:mx-2 mx-1 link-underline"
+          >CONTACT</router-link
         >
         <router-link to="/mypanel" class="md:ml-2 ml-1 link-underline"
           >ACCOUNT</router-link
