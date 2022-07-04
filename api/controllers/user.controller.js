@@ -1,4 +1,5 @@
 const User = require("../models/user.model.js");
+const Utilisateur = require('../models/user.model.js')
 
 var mongoose = require("mongoose");
 const { isAuthenticated } = require("../middlewares/auth.js");
@@ -62,6 +63,9 @@ function getMyProfile(req, res) {
     return res.send(user);
   });
 }
+
+
+
 
 function getUserNameByID(req, res) {
   User.findById(req.params._id).then((user) => {
