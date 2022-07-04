@@ -21,11 +21,11 @@ import Header from "./Header.vue";
       <p>adam-myn.handouchi@efrei.net</p>
     </div>
     <div class="flex flex-col">
-      <h2 class="text-center">Marc Bernard</h2>
+      <h2 class="text-center">Rémy Ricochin</h2>
       <div class="m-auto">
         <img class="max-w-[300px]" src="../assets/Pics/Marc.jpg" alt="" />
       </div>
-      <p>marc.bernard@efrei.net</p>
+      <p>remy.ricochin@efrei.net</p>
     </div>
     <div class="flex flex-col">
       <h2 class="text-center">Nicolas Blanchard</h2>
