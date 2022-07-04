@@ -26,14 +26,14 @@ const { isAuthenticated } = require("../middlewares/auth.js");
 //cette fonction vise à retourner l'entiereté des repas de la semaine (l'array avec lundi, mardi etc. dans Utilisateur model)
 //les repas de la semaine pour un Utilisateur en particulier
 
-function findAllRepas(req,res){
-    try{
-      const plats = await Plat.find();
-      res.json(plats)
-    }catch(err){
-      res.json({message: err});
-    }
-  }
+// function findAllRepas(req,res){
+//     try{
+//       const plats = await Plat.find();
+//       res.json(plats)
+//     }catch(err){
+//       res.json({message: err});
+//     }
+//   }
 
 
 //tous les plats
@@ -129,7 +129,7 @@ function findRepasDaySpecific(req, res){
 
 
 module.exports = {
-    findAllRepas,
+    // findAllRepas,
     findRepas,
     findRepasDay,
     findRepasDaySpecific

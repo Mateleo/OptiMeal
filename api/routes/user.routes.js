@@ -27,7 +27,7 @@ module.exports = function (app) {
 
   //routes set profile
   //mettre en place une fonction qui permettra de modifier du coup le régime alimentaire du profile connecté
-  app.patch('/api/users/myprofile', auth.isAuthenticated, urlencodedParser, user.modifyMyProfile);
+  // app.patch('/api/users/myprofile', auth.isAuthenticated, urlencodedParser, user.modifyMyProfile);
 
   // app.get("/api/users/myplanner", auth.isAuthenticated, user.getPlanner)
   // app.get("/api/users/myboosters", auth.isAuthenticated, user.getMyBoosters)

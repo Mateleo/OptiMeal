@@ -80,7 +80,7 @@ console.log(store.getProfile);
           <h3>Weight loss</h3>
           <button
            @click="changeProfile('L')"
-            :class="store.getProfile === 'L' ? ['bg-pink-400'] : ['bg-pink-200']"
+            :class="store.getProfile === 'L' ? ['bg-pink-500'] : ['bg-pink-200']"
             class="aspect-[2/3] rounded-lg hover:bg-pink-600 transition-colors ease-in"
           >
             ☁️
