@@ -16,7 +16,7 @@ import Header from "./Header.vue";
     <div class="flex flex-col">
       <h2 class="text-center">Adam-Myn Handouchi</h2>
       <div class="m-auto">
-        <img class="max-w-[300px]" src="../assets/Pics/adam.jpg" alt="" />
+        <img class="max-w-[300px]" src="../assets/Pics/adam.png" alt="" />
       </div>
       <p>adam-myn.handouchi@efrei.net</p>
     </div>
