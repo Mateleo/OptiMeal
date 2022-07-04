@@ -18,7 +18,7 @@ import Header from "./Header.vue";
       <div class="m-auto">
         <img class="max-w-[300px]" src="../assets/Pics/Theo.png" alt="" />
       </div>
-      <p>théo.briant@efrei.net</p>
+      <p>adam-myn.handouchi@efrei.net</p>
     </div>
     <div class="flex flex-col">
       <h2 class="text-center">Marc Bernard</h2>
