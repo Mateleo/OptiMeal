@@ -28,6 +28,13 @@ import Header from "./Header.vue";
       <p>remy.ricochin@efrei.net</p>
     </div>
     <div class="flex flex-col">
+      <h2 class="text-center">Corentin Henrion</h2>
+      <div class="m-auto">
+        <img class="max-w-[300px]" src="../assets/Pics/corentin.jpg" alt="" />
+      </div>
+      <p>corentin.henrion@efrei.net</p>
+    </div>
+    <div class="flex flex-col">
       <h2 class="text-center">Nicolas Blanchard</h2>
       <div class="m-auto">
         <img class="max-w-[300px]" src="../assets/Pics/nico.png" alt="" />
