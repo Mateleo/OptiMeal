@@ -12,13 +12,16 @@ require("./strategies/google.js");
 const bodyParser = require("body-parser");
 
 const uri =
-  "mongodb+srv://MastercampBdd:"+process.env.PASSWORD+"@cluster0.ljgxm.mongodb.net/?retryWrites=true&w=majority";
+  "mongodb+srv://MastercampBdd:" +
+  process.env.PASSWORD +
+  "@cluster0.ljgxm.mongodb.net/?retryWrites=true&w=majority";
 mongoose.Promise = global.Promise;
 
 mongoose
   .connect(uri, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
+    dbName: "Mastercamp_Bdd",
   })
   .then(() => {
     console.log("Database connected");
@@ -43,7 +46,7 @@ app.use(
       sameSite: process.env.NODE_ENV === "production" ? "none" : "lax", // must be 'none' to enable cross-site delivery
       secure: process.env.NODE_ENV === "production", // must be true if sameSite='none'
     },
-    store: Store.create({ mongoUrl: uri }),
+    store: Store.create({ mongoUrl: uri, dbName: "Mastercamp_Bdd" }),
   })
 );
 

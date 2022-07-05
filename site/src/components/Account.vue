@@ -4,24 +4,28 @@ import { useStore } from "@/stores/store";
 import { ref } from "vue";
 const store = useStore();
 
-let age = ref()
-let profile = ref()
+let age = ref();
+let profile = ref();
 
-age.value = store.getAge
-profile.value = store.getProfile
+age.value = store.getAge;
+profile.value = store.getProfile;
 
 function save() {
-  store.updateUserProfile({ _id: store.getUserId, age:age.value, profile:profile.value});
+  store.updateUserProfile({
+    _id: store.getUserId,
+    age: age.value,
+    profile: profile.value,
+  });
 }
 
-function changeAge(ageName:any){
-  store.userData.age = ageName
-  age.value = ageName
+function changeAge(ageName: any) {
+  store.userData.age = ageName;
+  age.value = ageName;
 }
 
-function changeProfile(ProfileName:any){
-  store.userData.profile = ProfileName
-  profile.value = ProfileName
+function changeProfile(ProfileName: any) {
+  store.userData.profile = ProfileName;
+  profile.value = ProfileName;
 }
 
 console.log(store.getProfile);
@@ -41,16 +45,16 @@ console.log(store.getProfile);
       <h2>My profile</h2>
       <div class="flex justify-center w-full">
         <button
-          :class="store.getAge == 'teen' ? '' : ['bg-sky-200']"
+          :class="store.getAge == 'teen' ? ['bg-sky-500'] : ['bg-sky-200']"
           @click="changeAge('teen')"
-          class="grow px-4 py-2 font-bold text-white bg-sky-500 mr-4 hover:bg-sky-700 transition-colors ease-in rounded-sm"
+          class="grow px-4 py-2 font-bold text-white mr-4 hover:bg-sky-700 transition-colors ease-in rounded-sm"
         >
           TEEN
         </button>
         <button
-        @click="changeAge('adult')"
-          :class="store.getAge == 'adult' ? '' : ['bg-green-200']"
-          class="grow px-4 py-2 font-bold text-white bg-green-600 hover:bg-green-800 transition-colors ease-in rounded-sm"
+          @click="changeAge('adult')"
+          :class="store.getAge == 'adult' ? ['bg-green-600'] : ['bg-green-200']"
+          class="grow px-4 py-2 font-bold text-white hover:bg-green-800 transition-colors ease-in rounded-sm"
         >
           ADULT
         </button>
@@ -59,8 +63,8 @@ console.log(store.getProfile);
         <div class="flex flex-col">
           <h3>Weight gain</h3>
           <button
-          @click="changeProfile('G')"
-            :class="store.getProfile === 'G' ? ['bg-red-500'] : ['bg-red-300']"
+            @click="changeProfile('G')"
+            :class="store.getProfile === 'G' ? ['bg-red-500'] : ['bg-red-200']"
             class="aspect-[2/3] rounded-lg hover:bg-red-700 transition-colors ease-in"
           >
             💪
@@ -69,7 +73,7 @@ console.log(store.getProfile);
         <div class="flex flex-col">
           <h3>Classic</h3>
           <button
-          @click="changeProfile('C')"
+            @click="changeProfile('C')"
             :class="store.getProfile === 'C' ? ['bg-gray-600'] : ['bg-gray-200']"
             class="aspect-[2/3] rounded-lg hover:bg-gray-700 transition-colors ease-in"
           >
@@ -79,9 +83,9 @@ console.log(store.getProfile);
         <div class="flex flex-col">
           <h3>Weight loss</h3>
           <button
-           @click="changeProfile('L')"
-            :class="store.getProfile === 'L' ? ['bg-pink-500'] : ['bg-pink-200']"
-            class="aspect-[2/3] rounded-lg hover:bg-pink-600 transition-colors ease-in"
+            @click="changeProfile('L')"
+            :class="store.getProfile === 'L' ? ['bg-pink-600'] : ['bg-pink-200']"
+            class="aspect-[2/3] rounded-lg hover:bg-pink-700 transition-colors ease-in"
           >
             ☁️
           </button>
