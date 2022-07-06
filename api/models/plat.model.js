@@ -9,13 +9,14 @@ const UserSchema = mongoose.Schema({
   planner: [{ type: String }],
 });*/
 
-
 const PlatSchema = mongoose.Schema({
-	typeplat : { type: String },
-	repas: [{ type : String }], //array of string
-	apports: [{ type : Number }],
-	recette: { type : String }
-})
+  type: { type: String },
+  repas: [{ type: String }], //array of string
+  apports: { type: Object },
+  Recette: { type: String },
+  type: { type: String },
+  name: { type: String },
+});
 /*
 
 // plus judicieux de le mettre dans user.model.js
@@ -53,5 +54,5 @@ const UtilisateurSchema = mongoose.Schema({
   //nourriture: [{ type: Agenda }],
 })*/
 
-module.exports = mongoose.model("Plat", PlatSchema);
+module.exports = mongoose.model("recipes", PlatSchema);
 //module.exports = mongoose.model('Utilisateur', UtilisateurSchema);

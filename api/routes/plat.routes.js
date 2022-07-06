@@ -7,13 +7,11 @@ module.exports = function (app) {
   const user = require("../controllers/user.controller.js");
   const auth = require("../middlewares/auth.js");
 
-
   //app.put("/api/planner", auth.isAuthenticated, urlencodedParser, planner.createPlanner);
 
   //route visant à get l'entiereté des plats
   //app.get("/api/plat", Plat.findAllPlats);// auth.isAuthenticated, planner.findAllPlanner);
   //,(req,res) => res.json({ message: "route get plat" }));
-  
 
   //vise à renvoyer l'entiereté des plats
   /*
@@ -26,29 +24,33 @@ module.exports = function (app) {
       res.json({message: err});
     }
   });*/
-  app.get('/api/plat' , Plat.findAllRepas, auth.isAuthenticated);
-  
+  app.get("/api/plat", auth.isAuthenticated, Plat.findAllRepas);
+  app.get("/api/plat/random/:p", auth.isAuthenticated, Plat.randomMenu);
+
   //un plat en particulier
-  app.get("/api/plat/:_id"//);// auth.isAuthenticated);
-  ,(req,res) => res.json({ message: "route get plat id" }));
+  // app.get(
+  //   "/api/plat/:_id", //);// auth.isAuthenticated);
+  //   (req, res) => res.json({ message: "route get plat id" })
+  // );
 
   //get l'emploi du temps de nourriture
-  app.get("/api/:_nourriture", auth.isAuthenticated, Plat.findRepas);
+  // app.get("/api/:_nourriture", auth.isAuthenticated, Plat.findRepas);
 
   //get un jour en particulier du planning nourriture
-  app.get('/api/:_nourriture/:day', auth.isAuthenticated, Plat.findRepasDay)
-
+  // app.get("/api/:_nourriture/:day", auth.isAuthenticated, Plat.findRepasDay);
 
   //get jour + moment de la journée du planning nourriture
-  app.get('/api/:_nourriture/:day/:moment', auth.isAuthenticated, Plat.findRepasDaySpecific)
-
-
+  // app.get(
+  //   "/api/:_nourriture/:day/:moment",
+  //   auth.isAuthenticated,
+  //   Plat.findRepasDaySpecific
+  // );
   //get un emploi du temps généré aléatoirement
 
   //un jour particulier
   //app.get("/api/nourriture/:_id", auth.isAuthenticated);
 
-/*
+  /*
   app.patch(
     "/api/planner/:link",
     auth.isAuthenticated,
