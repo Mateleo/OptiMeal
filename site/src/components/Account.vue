@@ -63,8 +63,8 @@ console.log(store.getProfile);
         <div class="flex flex-col">
           <h3>Weight gain</h3>
           <button
-            @click="changeProfile('G')"
-            :class="store.getProfile === 'G' ? ['bg-red-500'] : ['bg-red-200']"
+            @click="changeProfile('Gain')"
+            :class="store.getProfile === 'Gain' ? ['bg-red-500'] : ['bg-red-200']"
             class="aspect-[2/3] rounded-lg hover:bg-red-700 transition-colors ease-in"
           >
             💪
@@ -73,8 +73,8 @@ console.log(store.getProfile);
         <div class="flex flex-col">
           <h3>Classic</h3>
           <button
-            @click="changeProfile('C')"
-            :class="store.getProfile === 'C' ? ['bg-gray-600'] : ['bg-gray-200']"
+            @click="changeProfile('Normal')"
+            :class="store.getProfile === 'Normal' ? ['bg-gray-600'] : ['bg-gray-200']"
             class="aspect-[2/3] rounded-lg hover:bg-gray-700 transition-colors ease-in"
           >
             ✨
@@ -83,8 +83,8 @@ console.log(store.getProfile);
         <div class="flex flex-col">
           <h3>Weight loss</h3>
           <button
-            @click="changeProfile('L')"
-            :class="store.getProfile === 'L' ? ['bg-pink-600'] : ['bg-pink-200']"
+            @click="changeProfile('Lose')"
+            :class="store.getProfile === 'Lose' ? ['bg-pink-600'] : ['bg-pink-200']"
             class="aspect-[2/3] rounded-lg hover:bg-pink-700 transition-colors ease-in"
           >
             ☁️

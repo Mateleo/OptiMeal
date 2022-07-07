@@ -8,8 +8,8 @@ interface user {
   googleId: string;
   avatar: string;
   username: string;
-  profile:"G" | "C" | "L";
-  age:"teen" | "adult"
+  profile: "Gain" | "Normal" | "Lose";
+  age: "teen" | "adult";
 }
 
 interface planner {
@@ -28,13 +28,21 @@ interface PromisePlanner {
 
 interface PromiseUser {
   _id: string;
-  profile:"G" | "C" | "L";
-  age:"teen" | "adult"
+  profile: "Gain" | "Normal" | "Lose";
+  age: "teen" | "adult";
+}
+
+interface menu {
+  _id: string;
+  Recette: string;
+  repas: [];
+  apports: { Calories: number; proteines: number; glucide: number; lipide: number };
 }
 
 export const useStore = defineStore("main", {
   state: () => ({
     userData: {} as user,
+    weekMenu: [] as menu[][],
   }),
   getters: {
     getUsername(state) {
@@ -46,12 +54,12 @@ export const useStore = defineStore("main", {
     getUserId(state) {
       return state.userData._id;
     },
-    getAge(state){
-      return state.userData.age
+    getAge(state) {
+      return state.userData.age;
     },
-    getProfile(state){
-      return state.userData.profile
-    }
+    getProfile(state) {
+      return state.userData.profile;
+    },
   },
   actions: {
     async fetchProfile() {
@@ -64,6 +72,17 @@ export const useStore = defineStore("main", {
       this.userData = response.data;
       console.log("fetch profile");
       console.log(this.userData);
+    },
+    async fetchWeekMenu() {
+      const response = await axios.get(
+        import.meta.env.VITE_API_URL + "/plat/random/"+this.getAge+this.getProfile,
+        {
+          withCredentials: true,
+        }
+      );
+      this.weekMenu = response.data;
+      console.log("fetch week menu");
+      console.log(this.weekMenu)
     },
     async updateUserProfile(data: PromiseUser) {
       console.log(data);
@@ -101,7 +120,7 @@ export const useStore = defineStore("main", {
       await axios(options);
       console.log("create card");
     },
-    async plannerJoin(data: { _id: string,username:string }, plannerlink: string) {
+    async plannerJoin(data: { _id: string; username: string }, plannerlink: string) {
       console.log(data, plannerlink);
       const options: AxiosRequestConfig = {
         method: "PATCH",

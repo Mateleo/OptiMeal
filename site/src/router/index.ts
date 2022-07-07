@@ -2,6 +2,7 @@ import { createRouter, createWebHistory, type RouteLocationNormalized } from "vu
 import Home from "../components/Home.vue";
 import Login from "../components/Login.vue";
 import Account from "../components/Account.vue";
+import Eat from "../components/Eat.vue";
 import { useStore } from "@/stores/store";
 import axios from "axios";
 import { useToast } from "vue-toastification";
@@ -38,6 +39,22 @@ const routes = [
         return "/";
       } else {
         // store.fetchProfile().then(store.fetchUserPlanners(store.getUsername));
+      }
+      return true;
+    },
+  },
+  {
+    path: "/eat",
+    name: "Eat",
+    component: Eat,
+    beforeEnter: async (to: RouteLocationNormalized, from: RouteLocationNormalized) => {
+      const store = useStore();
+      if (!store.getUsername) {
+        return "/";
+      } else {
+      }
+      if(store.weekMenu.length==0){
+        store.fetchWeekMenu()
       }
       return true;
     },

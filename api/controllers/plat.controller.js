@@ -23,7 +23,7 @@ const teenGain = {
   lipide: 105,
 };
 
-const teenLoss = {
+const teenLose = {
   Calories: 2000,
   proteines: 101,
   glucide: 200,
@@ -59,8 +59,8 @@ function apportsChecker(p, apports) {
     p = adultNormal;
   } else if (p == "teenGain") {
     p = teenGain;
-  } else if (p == "teenLoss") {
-    p = teenLoss;
+  } else if (p == "teenLose") {
+    p = teenLose;
   } else if (p == "adultGain") {
     p = adultGain;
   } else if (p == "adultLose") {
