@@ -35,13 +35,17 @@ interface PromiseUser {
 interface menu {
   _id: string;
   Recette: string;
+  type:string,
   repas: [];
+  Image:string,
   apports: { Calories: number; proteines: number; glucide: number; lipide: number };
+  name:string
 }
 
 export const useStore = defineStore("main", {
   state: () => ({
     userData: {} as user,
+    weekApport: [] as any,
     weekMenu: [] as menu[][],
   }),
   getters: {
@@ -80,9 +84,10 @@ export const useStore = defineStore("main", {
           withCredentials: true,
         }
       );
-      this.weekMenu = response.data;
+      this.weekMenu = response.data[0];
+      this.weekApport = response.data[1]
       console.log("fetch week menu");
-      console.log(this.weekMenu)
+      console.log(response.data)
     },
     async updateUserProfile(data: PromiseUser) {
       console.log(data);
@@ -95,6 +100,18 @@ export const useStore = defineStore("main", {
       };
       await axios(options);
       console.log("update profile");
+    },
+    getPetitDej(index:number){
+      const menu = this.weekMenu[index]
+      return menu.filter(plat => plat.repas[0]=="petit dej")
+    },
+    getDej(index:number){
+      const menu = this.weekMenu[index]
+      return menu.filter(plat => plat.repas[0]=="dej")
+    },
+    getDiner(index:number){
+      const menu = this.weekMenu[index]
+      return menu.filter(plat => plat.repas[0]=="diner")
     },
     async putPlanner(data: PromisePlanner) {
       console.log(data);

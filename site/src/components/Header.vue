@@ -8,10 +8,10 @@
       <div class="flex m-auto">
         <router-link
           to="/"
-          class="font-dmserif text-5xl w-full text-center md:w-auto md:text-left flex"
+          class="font-dmserif text-4xl md:text-5xl w-full text-center md:w-auto md:text-left flex"
           >
           <div class="w-[50px] h-[50px] mr-2"><img src="../assets/LOGO.png" alt=""></div>
-          OptiMeal</router-link
+          <h1 class="mt-1 md:mt-0">OptiMeal</h1></router-link
         >
       </div>
       <nav

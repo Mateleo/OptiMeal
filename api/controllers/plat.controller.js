@@ -23,7 +23,7 @@ const teenGain = {
   lipide: 105,
 };
 
-const teenLose = {
+const teenLoss = {
   Calories: 2000,
   proteines: 101,
   glucide: 200,
@@ -59,8 +59,8 @@ function apportsChecker(p, apports) {
     p = adultNormal;
   } else if (p == "teenGain") {
     p = teenGain;
-  } else if (p == "teenLose") {
-    p = teenLose;
+  } else if (p == "teenLoss") {
+    p = teenLoss;
   } else if (p == "adultGain") {
     p = adultGain;
   } else if (p == "adultLose") {
@@ -87,6 +87,7 @@ function shuffleArray(array) {
 
 async function randomMenu(req, res) {
   let week = [];
+  let weekapport = []
   for (let x = 0; x < 7; x++) {
     const db = await Plat.find().exec();
     apports = {
@@ -252,8 +253,9 @@ async function randomMenu(req, res) {
       console.log(apports);
     }
     week.push(random_plats);
+    weekapport.push(apports);
   }
-  res.send(week);
+  res.send([week,weekapport]);
 }
 module.exports = {
   randomMenu,

@@ -7,9 +7,9 @@ const store = useStore();
 function nextStep() {
   console.log(store.getUsername);
   if (!store.getUsername) {
-    router.push("login")
+    router.push("login");
   } else {
-    router.push("mypanel")
+    router.push("mypanel");
   }
 }
 store.fetchProfile();
@@ -18,13 +18,12 @@ store.fetchProfile();
   <Header></Header>
   <main class="text-4xl mt-5 text-center flex flex-wrap w-[100%] sm:w-[70%] m-auto">
     <div class="w-full text-center text-2xl sm:text-4xl font-bold my-5">
-      The best recipes for the best dishes<br />
+      Les meilleures recettes pour les meilleurs plats<br />
     </div>
     <div class="w-[80%] md:w-1/2 text-lg m-auto text-justify pr-4">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore eaque labore quia
-      sequi, velit excepturi, aut ea sapiente numquam eveniet delectus minima dolor nihil
-      magnam minus unde fuga harum cumque officiis reprehenderit ipsam facilis maxime.
-      Consectetur numquam in velit ullam!
+Inscrivez-vous gratuitement et facilement grâce à votre compte google ! 
+Choisis le type de de régime alimentaire que vous voulez suivre et notre algorithme fera le reste pour vous !
+Un nouveau menu chaque semaine adapter à votre demande ! Alors êtes-vous prêt à cuisiner ?
     </div>
     <div class="hidden md:block w-1/2">
       <img class="m-auto" src="https://picsum.photos/600" alt="" />

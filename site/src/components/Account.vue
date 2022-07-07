@@ -61,7 +61,7 @@ console.log(store.getProfile);
       </div>
       <div class="grid grid-cols-3 gap-4 text-center">
         <div class="flex flex-col">
-          <h3>Weight gain</h3>
+          <h3 class="md:h-auto h-[48px]">Weight gain</h3>
           <button
             @click="changeProfile('Gain')"
             :class="store.getProfile === 'Gain' ? ['bg-red-500'] : ['bg-red-200']"
@@ -71,7 +71,7 @@ console.log(store.getProfile);
           </button>
         </div>
         <div class="flex flex-col">
-          <h3>Classic</h3>
+          <h3 class="md:h-auto h-[48px]">Weight Classic</h3>
           <button
             @click="changeProfile('Normal')"
             :class="store.getProfile === 'Normal' ? ['bg-gray-600'] : ['bg-gray-200']"
@@ -81,7 +81,7 @@ console.log(store.getProfile);
           </button>
         </div>
         <div class="flex flex-col">
-          <h3>Weight loss</h3>
+          <h3 class="md:h-auto h-[48px]">Weight loss</h3>
           <button
             @click="changeProfile('Lose')"
             :class="store.getProfile === 'Lose' ? ['bg-pink-600'] : ['bg-pink-200']"
