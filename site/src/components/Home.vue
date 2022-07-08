@@ -18,7 +18,7 @@ store.fetchProfile();
   <Header></Header>
   <main class="text-4xl mt-5 text-center flex flex-wrap w-[100%] sm:w-[70%] m-auto">
     <div class="w-full text-center text-2xl sm:text-4xl font-bold my-5">
-      Les meilleures recettes pour les meilleurs plats<br />
+      The best recipes for the best dishes<br />
     </div>
     <div class="w-[80%] md:w-1/2 text-lg m-auto text-justify pr-4">
 Inscrivez-vous gratuitement et facilement grâce à votre compte google ! 
