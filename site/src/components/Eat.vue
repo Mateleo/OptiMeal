@@ -48,6 +48,11 @@ const adultGain = {
   glucide: 280,
   lipide: 105,
 };
+
+function route(plannerlink: string) {
+  return "/recette/" + plannerlink;
+}
+
 </script>
 <template>
   <Header></Header>
@@ -60,8 +65,9 @@ const adultGain = {
           <div>
             <h2 class="text-xl font-semibold mb-2">Petit dejeuner</h2>
             <div class="flex">
-              <button
+              <router-link
                 v-for="petitdej in store.getPetitDej(index)"
+                :to="route(petitdej._id)"
                 class="bg-black/20 p-2 rounded-lg flex flex-col mr-1 md:mr-3 hover:bg-sky-400 transition-colors ease-in w-[100px] h-[190px] md:w-[200px] md:h-[270px]"
               >
               <div class=" h-[60px] w-full flex justify-center items-center">
@@ -92,14 +98,15 @@ const adultGain = {
                   :progress="petitdej.apports.lipide / store.weekApport[index].lipide"
                   :color="'yellow'"
                 ></Progress>
-              </button>
+              </router-link>
             </div>
           </div>
           <div>
             <h2 class="text-xl font-semibold mb-2 mt-4">dejeuner</h2>
             <div class="flex">
-              <button
+              <router-link
                 v-for="dejeuner in store.getDej(index)"
+                :to="route(dejeuner._id)"
                 class="bg-black/20 p-2 rounded-lg flex flex-col mr-1 md:mr-3 hover:bg-sky-400 transition-colors ease-in w-[100px] h-[190px] md:w-[200px] md:h-[270px]"
               >
               <div class=" h-[60px] w-full flex justify-center items-center">
@@ -130,14 +137,15 @@ const adultGain = {
                   :progress="dejeuner.apports.lipide / store.weekApport[index].lipide"
                   :color="'yellow'"
                 ></Progress>
-              </button>
+              </router-link>
             </div>
           </div>
           <div>
             <h2 class="text-xl font-semibold mb-2 mt-4">diner</h2>
             <div class="flex">
-              <button
+              <router-link
                 v-for="diner in store.getDiner(index)"
+                :to="route(diner._id)"
                 class="bg-black/20 p-2 rounded-lg flex flex-col mr-1 md:mr-3 hover:bg-sky-400 transition-colors ease-in w-[100px] h-[190px] md:w-[200px] md:h-[270px]"
               >
               <div class=" h-[60px] w-full flex justify-center items-center">
@@ -166,7 +174,7 @@ const adultGain = {
                   :progress="diner.apports.lipide / store.weekApport[index].lipide"
                   :color="'yellow'"
                 ></Progress>
-              </button>
+              </router-link>
             </div>
           </div>
         </div>

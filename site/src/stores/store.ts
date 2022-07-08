@@ -35,11 +35,11 @@ interface PromiseUser {
 interface menu {
   _id: string;
   Recette: string;
-  type:string,
+  type: string;
   repas: [];
-  Image:string,
+  Image: string;
   apports: { Calories: number; proteines: number; glucide: number; lipide: number };
-  name:string
+  name: string;
 }
 
 export const useStore = defineStore("main", {
@@ -79,15 +79,15 @@ export const useStore = defineStore("main", {
     },
     async fetchWeekMenu() {
       const response = await axios.get(
-        import.meta.env.VITE_API_URL + "/plat/random/"+this.getAge+this.getProfile,
+        import.meta.env.VITE_API_URL + "/plat/random/" + this.getAge + this.getProfile,
         {
           withCredentials: true,
         }
       );
       this.weekMenu = response.data[0];
-      this.weekApport = response.data[1]
+      this.weekApport = response.data[1];
       console.log("fetch week menu");
-      console.log(response.data)
+      console.log(response.data);
     },
     async updateUserProfile(data: PromiseUser) {
       console.log(data);
@@ -101,17 +101,17 @@ export const useStore = defineStore("main", {
       await axios(options);
       console.log("update profile");
     },
-    getPetitDej(index:number){
-      const menu = this.weekMenu[index]
-      return menu.filter(plat => plat.repas[0]=="petit dej")
+    getPetitDej(index: number) {
+      const menu = this.weekMenu[index];
+      return menu.filter((plat) => plat.repas[0] == "petit dej");
     },
-    getDej(index:number){
-      const menu = this.weekMenu[index]
-      return menu.filter(plat => plat.repas[0]=="dej")
+    getDej(index: number) {
+      const menu = this.weekMenu[index];
+      return menu.filter((plat) => plat.repas[0] == "dej");
     },
-    getDiner(index:number){
-      const menu = this.weekMenu[index]
-      return menu.filter(plat => plat.repas[0]=="diner")
+    getDiner(index: number) {
+      const menu = this.weekMenu[index];
+      return menu.filter((plat) => plat.repas[0] == "diner");
     },
     async putPlanner(data: PromisePlanner) {
       console.log(data);
@@ -124,6 +124,16 @@ export const useStore = defineStore("main", {
       };
       await axios(options);
       console.log("create card");
+    },
+    getRecete(recettelink: string) {
+      for (let x = 0; x < 7; x++) {
+        for (let i = 0; i < this.weekMenu[x].length; i++) {
+          console.log(this.weekMenu[x][i]);
+          if (this.weekMenu[x][i]._id == recettelink) {
+            return this.weekMenu[x][i].Recette;
+          }
+        }
+      }
     },
     async updateUserDateZone(data: PromiseUser, plannerlink: string) {
       console.log(data, plannerlink);

@@ -9,6 +9,7 @@ import { useToast } from "vue-toastification";
 // import Planner from "../components/Planner.vue";
 // import Create from "../components/Create.vue";
 import Contact from "../components/Contact.vue";
+import Recette from "../components/Recette.vue";
 // import { useStore } from "@/stores/store";
 // import { useToast } from "vue-toastification";
 // import axios from "axios";
@@ -33,6 +34,20 @@ const routes = [
     path: "/mypanel",
     name: "Account",
     component: Account,
+    beforeEnter: async (to: RouteLocationNormalized, from: RouteLocationNormalized) => {
+      const store = useStore();
+      if (!store.getUsername) {
+        return "/";
+      } else {
+        // store.fetchProfile().then(store.fetchUserPlanners(store.getUsername));
+      }
+      return true;
+    },
+  },
+  {
+    path: "/recette/:recettelink",
+    name: "Recette",
+    component: Recette,
     beforeEnter: async (to: RouteLocationNormalized, from: RouteLocationNormalized) => {
       const store = useStore();
       if (!store.getUsername) {
